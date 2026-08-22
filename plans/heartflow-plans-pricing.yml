@@ -1,0 +1,22 @@
+generated: '2026-08-22'
+method: searched
+source: https://www.heartflow.com/sitemaps.xml ; https://www.heartflow.com/ccta-advantage/reimbursement-resources/
+plan_count: 0
+note: >-
+  Heartflow publishes no pricing page and no plans. The full public sitemap (140 URLs,
+  crawled 2026-08-22) contains no /pricing/, /plans/ or /cost/ page, and there is no
+  self-serve signup — https://app.heartflow.net/ is a login for existing institutional
+  customers only. Heartflow sells to hospitals and imaging centers, and its published
+  commercial material is reimbursement guidance rather than list pricing: the
+  reimbursement-resources page covers CPT coding, Medicare national payment rates and
+  commercial payer coverage for the analyses, not what an institution pays Heartflow.
+  plan_count is 0 because no tier is published, not because none exists.
+commercial_model: enterprise-contract
+self_serve: false
+plans: []
+reimbursement_note: >-
+  FFRct Analysis moved to a Category I CPT code in 2023 and CMS has set a national
+  payment rate for the analysis in physician offices and imaging centers; Plaque Analysis
+  gained Medicare coverage in 2025. These are payer rates to the provider institution,
+  not Heartflow's own price list, and are recorded here only so the zero above is not
+  misread as "no commercial information exists".

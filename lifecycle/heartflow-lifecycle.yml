@@ -1,0 +1,55 @@
+generated: '2026-08-22'
+method: probed
+source: >-
+  live probes of https://api.heartflow.net ; https://www.heartflow.com/ full sitemap
+  crawl ; https://heartflow.statuspage.io/ control probe
+note: >-
+  Heartflow publishes no versioning policy, no deprecation policy, no SLA and no status
+  page. Only the versioning SCHEME could be established, and only from an observed route.
+  NO `StatusPage` and NO `Deprecation` pointer is emitted in apis.yml.
+versioning:
+  scheme: uri-path
+  current_version: v1
+  evidence: >-
+    https://api.heartflow.net/api/v1/ returns the DRF authentication challenge (403)
+    while https://api.heartflow.net/api/ returns 404, so /api/v1/ is a real mounted
+    version prefix.
+  policy_published: false
+deprecation:
+  policy_published: false
+  sunset_header: unknown
+  deprecation_header: unknown
+  note: >-
+    RFC 8594 Sunset / Deprecation headers could not be observed — no route returns a
+    2xx anonymously.
+  deprecated_operations: []
+status_page:
+  published: false
+  probes:
+  - url: https://status.heartflow.com/
+    status: 000
+    note: does not resolve
+  - url: https://status.heartflow.net/
+    status: 000
+    note: does not resolve
+  - url: https://heartflow.statuspage.io/
+    status: 200
+    note: >-
+      NOT a Heartflow status page. Atlassian serves its Statuspage marketing site for
+      any unclaimed *.statuspage.io subdomain — a control probe of
+      https://zzz-not-a-real-company-xyz.statuspage.io/ also returned 200 with the same
+      "Real-Time Incident Communication with Statuspage | Atlassian" title, and
+      /api/v2/summary.json returns HTML rather than the Statuspage JSON. Recorded so a
+      later run does not re-credit this soft 200.
+sla:
+  published: false
+  note: >-
+    The only published timing commitment is clinical, not contractual — Heartflow states
+    a median 90-minute turnaround for analyses on
+    https://www.heartflow.com/heartflow-one/.
+changelog:
+  published: false
+  note: >-
+    No dated changelog or release-notes page exists on any public host; the closest
+    surface is the press-release archive under https://www.heartflow.com/press-release/,
+    which announces FDA clearances and reimbursement decisions rather than API changes.

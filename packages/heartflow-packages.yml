@@ -1,0 +1,39 @@
+generated: '2026-08-22'
+method: searched
+source: >-
+  registry.npmjs.org search, pypi.org, api.github.com/orgs/HeartFlow,
+  https://www.heartflow.com/ full sitemap crawl
+package_count: 0
+note: >-
+  Heartflow ships no first-party client libraries. Searched npm, PyPI and the company
+  GitHub organization on 2026-08-22 and found none. The npm hits for "heartflow"
+  (@yun520-1/heartflow, crewai-heartflow, langchain-heartflow) and the PyPI package
+  `heartflow` (v1.5.0, a Chinese-language command-line note-taking app published from
+  github.com/crillerium/heartflow) are unrelated third-party projects that merely share
+  the name — none is published by the company and none is recorded here. Because zero
+  official SDKs were found, NO `SDKs` pointer is emitted in apis.yml.
+github_organization:
+  url: https://github.com/HeartFlow
+  verified_first_party: true
+  verification: >-
+    api.github.com/orgs/HeartFlow returns name "Heartflow", blog
+    "https://www.heartflow.com/" and description "Non-invasive coronary artery diagnosis
+    and treatment planning" — the org belongs to the company.
+  public_repos: 3
+  repos:
+  - name: element-theme
+    language: JavaScript
+    description: Theme generator cli tool for Element.
+    last_pushed: '2019-07-16'
+    first_party_sdk: false
+    note: fork of the Element UI theme generator, not a Heartflow client library
+  - name: aws-subnet-ip-address-utilization-monitor
+    description: Monitor AWS Subnets
+    last_pushed: '2024-11-21'
+    first_party_sdk: false
+  - name: pipelines-workflows
+    description: null
+    last_pushed: '2026-07-27'
+    first_party_sdk: false
+    note: internal CI workflow templates; not a client library
+packages: []

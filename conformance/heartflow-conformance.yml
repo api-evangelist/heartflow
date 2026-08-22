@@ -1,0 +1,67 @@
+generated: '2026-08-22'
+method: searched
+source: https://security.heartflow.com/ ; https://www.heartflow.com/about/ ; live probes of https://api.heartflow.net
+note: >-
+  Heartflow publishes no machine-readable contract (see x-coverage in apis.yml), so
+  every entry below is asserted from published compliance material or from an observed
+  HTTP behaviour — none is derived from a spec. Where a standard could only be confirmed
+  inside a contract we cannot read, `conforms` is false with the reason stated rather
+  than assumed.
+conformance:
+- id: soc2-type2
+  conforms: true
+  evidence: 'Trust center lists SOC 2 Type 2; AICPA SOC badge on https://www.heartflow.com/about/'
+- id: iso-27001
+  conforms: true
+  evidence: 'Trust center lists ISO/IEC 27001:2022'
+- id: iso-13485
+  conforms: true
+  evidence: 'Trust center lists ISO 13485:2016; "ISO 13485 and EN ISO 13485 quality management for medical devices" badge on the About page'
+- id: hitrust
+  conforms: true
+  evidence: 'Trust center lists HITRUST; HITRUST badge on the About page'
+- id: hipaa
+  conforms: true
+  evidence: 'Trust center lists HIPAA; Heartflow processes identifiable patient imaging on behalf of covered entities'
+- id: gdpr
+  conforms: true
+  evidence: 'Trust center lists GDPR; products commercially available in the EU and UK'
+- id: ccpa
+  conforms: true
+  evidence: 'Trust center lists CCPA'
+- id: fda-510k
+  conforms: true
+  evidence: >-
+    FDA de novo 510(k) clearance for FFRct (2014), clearance for Roadmap Analysis and
+    Plaque Analysis (2022), Next Gen Plaque Analysis (2025) — https://www.heartflow.com/about/
+- id: oauth2
+  conforms: false
+  evidence: >-
+    /.well-known/oauth-authorization-server and /.well-known/oauth-protected-resource
+    both 404 on api.heartflow.net; the API answers with the Django REST Framework
+    "Authentication credentials were not provided." challenge rather than an OAuth
+    WWW-Authenticate header. No OAuth surface is discoverable anonymously.
+- id: oidc
+  conforms: false
+  evidence: '/.well-known/openid-configuration returns 404 on every Heartflow host'
+- id: rfc9457
+  conforms: false
+  evidence: >-
+    Error bodies observed on api.heartflow.net are DRF-style {"detail": "..."} with
+    content-type application/json, not application/problem+json.
+domain_standards:
+- id: dicom
+  conforms: false
+  evidence: >-
+    Heartflow One is a CCTA-derived imaging product and the marketing workflow states
+    analyses are "delivered automatically into PACS and EMR"
+    (https://www.heartflow.com/heartflow-one/), which in practice implies DICOM
+    transport. Recorded as NOT conformant because domain_standard_conformance reads the
+    CONTRACT, and no contract, conformance statement, or DICOM Conformance Statement is
+    published anywhere on a Heartflow public host. This is an unverified inference, not
+    a claim.
+- id: hl7-fhir
+  conforms: false
+  evidence: >-
+    No mention of HL7, FHIR or IHE anywhere on www.heartflow.com (full 140-URL sitemap
+    crawled 2026-08-22). EMR delivery is described only in prose.

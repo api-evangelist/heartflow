@@ -1,0 +1,18 @@
+generated: '2026-08-22'
+method: searched
+source: https://www.heartflow.com/ (full sitemap crawl) ; live probes of https://api.heartflow.net
+limit_count: 0
+note: >-
+  No rate limits are documented anywhere Heartflow publishes publicly, and none could be
+  observed: every route on api.heartflow.net answers 403 with the Django REST Framework
+  "Authentication credentials were not provided." body before any throttle is reached, and
+  the customer documentation host docs.heartflow.net is gated behind CloudFront signed
+  cookies. An honest zero — undocumented, not absent.
+rate_limits: []
+response_headers: []
+exhaustion_status: null
+observed:
+- url: https://api.heartflow.net/
+  http_status: 403
+  headers_seen: []
+  note: 'no X-RateLimit-*, RateLimit-* or Retry-After header present on the anonymous 403'

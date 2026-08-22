@@ -1,0 +1,48 @@
+generated: '2026-08-22'
+method: probed
+source: live HTTP probes of https://api.heartflow.net on 2026-08-22
+note: >-
+  Heartflow documents no authentication publicly. Everything below was observed from the
+  API's anonymous responses, not read from a specification or a docs page, so it records
+  that the API is authenticated and what framework serves it — not how to authenticate.
+  NO `Authentication` pointer is emitted in apis.yml, because emitting one would credit
+  Heartflow with documented authentication it does not publish.
+documented_publicly: false
+docs: null
+docs_gate: >-
+  https://docs.heartflow.net/ returns 403
+  <Error><Code>MissingKey</Code><Message>Missing Key-Pair-Id query parameter or cookie
+  value</Message></Error> — a CloudFront signed-cookie gate, so the auth reference is
+  customer-only.
+observed:
+  framework: Django REST Framework
+  framework_evidence: >-
+    Every authenticated route returns the exact DRF body
+    {"detail":"Authentication credentials were not provided."} with HTTP 403, and the
+    DRF browsable-schema routes /swagger/ and /redoc/ are mounted (403 rather than 404).
+  challenge_status: 403
+  www_authenticate_header: null
+  scheme: unknown
+  scheme_note: >-
+    DRF returns 403 without a WWW-Authenticate header when it cannot resolve a
+    credential, which is consistent with session or token authentication rather than
+    HTTP Basic. The concrete scheme cannot be established anonymously and is NOT guessed
+    here.
+probes:
+- url: https://api.heartflow.net/
+  status: 403
+  body: '{"detail":"Authentication credentials were not provided."}'
+- url: https://api.heartflow.net/api/v1/
+  status: 403
+  body: '{"detail":"Authentication credentials were not provided."}'
+- url: https://api.heartflow.net/swagger/
+  status: 403
+- url: https://api.heartflow.net/redoc/
+  status: 403
+- url: https://api.heartflow.net/.well-known/openid-configuration
+  status: 404
+- url: https://api.heartflow.net/.well-known/oauth-authorization-server
+  status: 404
+- url: https://api.heartflow.net/.well-known/oauth-protected-resource
+  status: 404
+security_schemes: []

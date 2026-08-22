@@ -1,23 +1,105 @@
 aid: heartflow
 name: HeartFlow
-description: 'HeartFlow is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Heartflow, Inc. (Nasdaq: HTFL) is a healthcare technology company founded in 2010 and headquartered
+  in San Francisco, California. Its Heartflow One platform applies AI to coronary computed tomography
+  angiography (CCTA) to non-invasively diagnose and manage coronary artery disease, bundling Roadmap Analysis,
+  FFRct Analysis, Plaque Analysis, Plaque Staging and the PCI Navigator, and delivering results back into
+  hospital PACS and EMR systems. More than 650,000 patients have been analyzed across 1,800+ institutions.
+  Heartflow runs a production REST API at api.heartflow.net and customer documentation at docs.heartflow.net,
+  but both are authenticated: there is no public developer program, no published OpenAPI, and no self-serve
+  signup.'
+image: https://www.heartflow.com/wp-content/uploads/2025/01/heartflow_logo_white.svg
 url: https://raw.githubusercontent.com/api-evangelist/heartflow/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-22'
 modified: '2026-08-22'
 tags:
 - Company
-apis: []
+- Healthcare
+- Medical Imaging
+- Artificial Intelligence
+- Cardiology
+- Diagnostics
+- Medical Devices
+- Radiology
+- Clinical Decision Support
+- Machine Learning
+apis:
+- name: Heartflow One Platform API
+  description: Production REST API behind the Heartflow One platform, observed live at https://api.heartflow.net.
+    Every probed route answers with the Django REST Framework challenge {"detail":"Authentication credentials
+    were not provided."}, and the interactive reference surfaces the framework normally exposes (/swagger/,
+    /redoc/) return 403 rather than a public document. No OpenAPI or Swagger definition is retrievable
+    without credentials, so this entry records the surface, not its contract.
+  humanURL: https://www.heartflow.com/heartflow-one/support/
+  baseURL: https://api.heartflow.net
+  tags:
+  - Healthcare
+  - Medical Imaging
+  - Cardiology
+  properties: []
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: TrustCenter
+  url: security/heartflow-trust-center.yml
+- type: DomainSecurity
+  url: security/heartflow-domain-security.yml
 - type: Website
-  url: https://forgeglobal.com/heartflow_stock/
+  url: https://www.heartflow.com/
+- type: Support
+  url: https://www.heartflow.com/heartflow-one/support/
+- type: Blog
+  url: https://www.heartflow.com/insights/
+- type: GitHubOrganization
+  url: https://github.com/HeartFlow
+- type: Login
+  url: https://app.heartflow.net/
+- type: TermsOfService
+  url: https://www.heartflow.com/terms-of-use/
+- type: PrivacyPolicy
+  url: https://www.heartflow.com/privacy-policy/
+- type: Compliance
+  url: conformance/heartflow-conformance.yml
+- type: Conformance
+  url: conformance/heartflow-conformance.yml
+- type: Plans
+  url: plans/heartflow-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/heartflow-rate-limits.yml
+- type: Packages
+  url: packages/heartflow-packages.yml
+- type: LLMsTxt
+  url: llms/heartflow-llms.txt
+- type: Lifecycle
+  url: lifecycle/heartflow-lifecycle.yml
+x-enrichment:
+  date: '2026-08-22'
+  status: minimal
+  artifacts_added: 11
+  pass: local-v1
+x-coverage:
+  state: gated
+  reason: customer-only-docs
+  detail: Heartflow runs a live Django REST Framework API at api.heartflow.net whose every route, including
+    the mounted /swagger/ and /redoc/ reference pages, answers 403 "Authentication credentials were not
+    provided.", and its documentation host docs.heartflow.net is a CloudFront distribution gated by signed
+    cookies that returns 403 MissingKey on every path, so the contract exists but is issued only to contracted
+    institutional customers.
+  evidence:
+  - url: https://api.heartflow.net/api/v1/
+    status: 403
+  - url: https://api.heartflow.net/swagger/
+    status: 403
+  - url: https://docs.heartflow.net/openapi.json
+    status: 403
+  - url: https://api.heartflow.net/openapi.json
+    status: 404
+  - url: https://www.heartflow.com/llms.txt
+    status: 404
+  checked: '2026-08-22'

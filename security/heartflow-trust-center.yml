@@ -1,0 +1,71 @@
+generated: '2026-08-22'
+method: searched
+probe: true
+source: https://security.heartflow.com/
+url: https://security.heartflow.com/
+platform: SafeBase (Drata)
+discovery: >-
+  Linked from the site footer as "Heartflow Trust Center" at
+  https://www.heartflow.com/heartflow-trust-center/, which 301s to
+  https://security.heartflow.com/. The host sits behind a Cloudflare interactive
+  challenge, so a plain curl gets 403; a browser user-agent renders the real page.
+certifications:
+- SOC 2 Type 2
+- ISO/IEC 27001:2022
+- ISO 13485:2016
+- HITRUST
+- HIPAA
+- GDPR
+- CCPA
+programs:
+  product_security:
+  - Audit Logging
+  - Multi-Factor Authentication
+  - Role-Based Access Control
+  data_security:
+  - Access Monitoring
+  - Data Backups
+  - Encryption-at-rest
+  application_security:
+  - Application Penetration Testing
+  - Secure Development Training
+  - Software Bill of Materials (SBOM)
+  ai_security:
+  - AI Training Data and Bias
+  - AI Security
+  - AI Monitoring
+  infrastructure:
+  - Amazon Web Services
+  - Business Continuity / Disaster Recovery
+  - Capacity Planning & Management
+  endpoint_security:
+  - Anti-Malware
+  - Disk Encryption
+  - Mobile Device Management
+  network_security:
+  - Firewall
+  - IDS/IPS
+  - Network Penetration Testing
+  corporate_security:
+  - Asset Management Practices
+  - Email Protection
+  - Employee Handbook
+gaps:
+- >-
+  No vulnerability disclosure or responsible-disclosure contact is published on the
+  trust center, and no /.well-known/security.txt is served on any Heartflow host.
+- >-
+  No public subprocessor list is displayed; document access on SafeBase trust centers
+  is normally NDA-gated.
+evidence:
+- source: https://security.heartflow.com/
+  http_status: 403
+  note: >-
+    403 is a Cloudflare interactive challenge served to non-browser clients, not a
+    dead page — the page renders for a browser user-agent. Certifications above were
+    read from that rendered page.
+- source: https://www.heartflow.com/about/
+  http_status: 200
+  note: >-
+    Company About page carries the same certification badges — ISO 13485 / EN ISO
+    13485, SOC 2 (AICPA), HITRUST, ISO 27001.

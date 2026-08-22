@@ -1,0 +1,110 @@
+generated: '2026-08-22'
+method: probed
+source: live GET probes of /.well-known/* on every host named in apis.yml
+note: >-
+  Nothing was served. Every /.well-known/ path probed on every Heartflow host returned
+  404, 302 or a bot challenge, so no document was saved and NO WellKnown or SecurityTxt
+  pointer is emitted in apis.yml. This file records a verified absence, not a presence.
+hit_count: 0
+hosts:
+- host: https://www.heartflow.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+  soft_404_control:
+    path: /this-path-should-not-exist-xyz123
+    status: 404
+    note: control also 404s, so the 404s above are genuine and not a catch-all
+- host: https://api.heartflow.net
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+  soft_404_control:
+    path: /health
+    status: 404
+    note: >-
+      Host root returns 403 with the Django REST Framework body
+      {"detail":"Authentication credentials were not provided."}; unknown paths return
+      a plain 404 HTML page, so the 404s above are genuine.
+- host: https://app.heartflow.net
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+  soft_404_control:
+    path: /this-path-should-not-exist-xyz123
+    status: 302
+    note: >-
+      Application root 302s every unmatched path into the sign-in flow; the /.well-known/
+      404s above are therefore explicit, not the catch-all.
+- host: https://docs.heartflow.net
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+    file: null
+  soft_404_control:
+    path: /index.html
+    status: 403
+    note: >-
+      CloudFront distribution gated by signed cookies — every path returns
+      <Error><Code>MissingKey</Code><Message>Missing Key-Pair-Id query parameter or
+      cookie value</Message></Error>. Nothing is readable anonymously.

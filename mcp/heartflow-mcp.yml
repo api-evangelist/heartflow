@@ -1,0 +1,21 @@
+generated: '2026-08-22'
+method: searched
+status: none
+source: >-
+  https://www.heartflow.com/ full sitemap crawl ; registry.npmjs.org search ;
+  api.github.com/orgs/HeartFlow ; live probes of api.heartflow.net
+note: >-
+  No MCP server exists. Heartflow publishes no hosted MCP endpoint, ships no stdio MCP
+  package on npm or PyPI, and its GitHub organization contains no MCP project. No
+  candidate tool list could be derived either, because there is no readable OpenAPI to
+  derive one from — api.heartflow.net is entirely authenticated and docs.heartflow.net
+  is behind CloudFront signed cookies. NO `MCPServer` pointer is emitted in apis.yml;
+  this file records a verified absence.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: searched
+tools: []
