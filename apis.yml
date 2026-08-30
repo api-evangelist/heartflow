@@ -36,6 +36,17 @@ tags:
 - Medical Devices
 - Radiology
 - Clinical Decision Support
+- Machine-Learning
+tags_raw:
+- Company
+- Healthcare
+- Medical Imaging
+- Artificial Intelligence
+- Cardiology
+- Diagnostics
+- Medical Devices
+- Radiology
+- Clinical Decision Support
 - Machine Learning
 apis:
 - name: Heartflow One Platform API
