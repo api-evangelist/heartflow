@@ -50,7 +50,7 @@ tags:
 - Medical Devices
 - Radiology
 - Clinical Decision Support
-- Machine-Learning
+- Machine Learning
 tags_raw:
 - Company
 - Healthcare
@@ -62,6 +62,7 @@ tags_raw:
 - Radiology
 - Clinical Decision Support
 - Machine Learning
+- Machine-Learning
 apis:
 - name: Heartflow One Platform API
   description: Production REST API behind the Heartflow One platform, observed live at https://api.heartflow.net.
